@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team5_servlet.kr.kh.team5.dao.BoardDAO">
+
+<select id="selectBoardList" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		select * from post 
+		where p_mb_id = #{id}
+		order by p_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from post  where p_mb_id=#{id}
+	</select>
+
+	<select id="selectBoardByCategory" resultType="team5_servlet.kr.kh.team5.model.vo.BoardVO">
+		select * from board where b_c_num = #{num}
+	</select>
+	
+	<insert id="insertBoard">
+		insert into board(b_name, b_c_num) value(#{b_name}, #{b_c_num})
+	</insert>
+	
+	<delete id="deleteBoard">
+		delete from board where b_num = #{b_num};
+	</delete>
+	
+	<select id="getBoardList" resultType="team5_servlet.kr.kh.team5.model.vo.BoardVO">
+		SELECT * FROM board
+	</select>
+	
+	<select id="selectBoard" resultType="team5_servlet.kr.kh.team5.model.vo.BoardVO">
+		SELECT * FROM board where b_num = #{b_num}
+	</select>
+	
+	<select id="selectPostByBoardList" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		select * from post where p_b_num = #{b_num}
+	</select>
+	
+	<select id="selectBoardByCagoryNumList" resultType="team5_servlet.kr.kh.team5.model.vo.BoardVO">
+		SELECT b_num FROM board where b_c_num = #{c_num};
+	</select>
+	
+	<update id="updateBoard">
+		update board set b_c_num = #{b_c_num}, b_name = #{b_name} where b_num = #{b_num}
+	</update>
+	
+</mapper>
+

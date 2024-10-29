@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 캐시를 비활성화- -->
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="localCacheScope" value="STATEMENT"/>
+	</settings>
+	<environments default="development">
+	  <environment id="development">
+	    <transactionManager type="JDBC"/>
+	    <dataSource type="POOLED">
+	      <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+	      <property name="url" value="jdbc:mysql://localhost:3306/team5"/>
+	      <property name="username" value="root"/>
+	      <property name="password" value="root"/>
+	    </dataSource>
+	  </environment>
+	</environments>
+  <mappers>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/MemberMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/CategoryMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/BoardMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/PostMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/ReplyMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/AdminMapper.xml"/>
+    <mapper resource="team5_servlet/kr/kh/team5/dao/KeywordMapper.xml"/>
+  </mappers>
+</configuration>

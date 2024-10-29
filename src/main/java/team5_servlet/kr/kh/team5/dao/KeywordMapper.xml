@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team5_servlet.kr.kh.team5.dao.KeywordDAO">
+	<select id="selectKey" resultType="team5_servlet.kr.kh.team5.model.vo.KeywordVO">
+	select * from keyword where k_mb_id=#{id};
+	</select>
+		<insert id="insertKey">	
+		INSERT INTO keyword(k_mb_id,k_content)
+		VALUES(#{keyword.k_mb_id} ,#{keyword.k_content})
+	</insert>
+	<update id="updateKey">
+	update keyword set
+	k_content=#{keyword.k_content}
+	
+	where k_mb_id=#{keyword.k_mb_id}
+	</update>
+	<select id="getKey" resultType="team5_servlet.kr.kh.team5.model.vo.KeywordVO">
+	select * from keyword where k_mb_id=#{id}
+	</select>
+</mapper>

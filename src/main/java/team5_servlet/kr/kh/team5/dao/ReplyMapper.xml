@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team5_servlet.kr.kh.team5.dao.ReplyDAO">
+	<!-- 내가 댓글 쓴 글 -->
+	<select id="selectMyReplyList" resultType="team5_servlet.kr.kh.team5.model.vo.ReplyVO">
+		select * from reply join post on r_p_num=p_num where  r_mb_id=#{id}
+		order by r_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from reply  where r_mb_id=#{id}
+	</select>
+
+	<delete id="deleteReplyByPnum">
+		DELETE FROM reply WHERE r_p_num = #{p_num}
+	</delete>
+
+
+	<insert id="insertReply">
+		insert into reply(r_p_num,r_content,r_mb_id,r_date)
+		values(#{reply.r_p_num},#{reply.r_content},#{reply.r_mb_id},#{reply.r_date})
+	</insert>
+	
+	<select id="selectReplyList" resultType="team5_servlet.kr.kh.team5.model.vo.ReplyVO">
+		select * from reply 
+		where r_p_num = #{cri.poNum}
+		order by r_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotalCountReply" resultType="int">
+		select count(*) from reply 
+		where r_p_num = #{cri.poNum}
+	</select>
+	
+	<select id="selectReply" resultType="team5_servlet.kr.kh.team5.model.vo.ReplyVO">
+		select * from reply 
+		where r_num = #{r_num}
+	</select>
+	
+	<update id="updateReply">
+		update reply set r_content = #{rp.r_content} where r_num = #{rp.r_num}		
+	</update>
+
+	<delete id="deleteReplyById">
+		Delete from reply where r_mb_id=#{id};
+	</delete>
+	
+	<delete id="deleteReplyByRnum">
+		DELETE FROM reply WHERE r_num = #{r_num}
+	</delete>
+
+</mapper>

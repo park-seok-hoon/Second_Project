@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team5_servlet.kr.kh.team5.dao.AdminDAO">
+
+	<select id="getAuthList" resultType="team5_servlet.kr.kh.team5.model.vo.AuthorityVO">
+		SELECT authority.*, count(ma_a_name) as a_count 
+		FROM team5.authority 
+			left join ma on a_name = ma_a_name 
+		group by a_name
+	</select>
+	
+	<select id="getAutoTotal" resultType="int">
+		SELECT COUNT(*) FROM authority
+	</select>
+	
+	<select id="selectRoleByAname" resultType="team5_servlet.kr.kh.team5.model.vo.AuthorityVO">
+		SELECT a_name, LPAD(a_list, 6, 0) AS a_list FROM authority WHERE a_name = #{a_name}
+	</select>
+	
+	<select id="getMemberList" resultType="team5_servlet.kr.kh.team5.model.vo.MemberVO">
+		SELECT * FROM member;
+	</select>
+	
+	<select id="selectMaByAname" resultType="String">
+		SELECT ma_mb_id FROM ma WHERE ma_a_name = #{a_name}
+	</select>
+	
+	<!-- 
+	========================== INSERT ========================== 
+	 -->
+	
+	<insert id="insertRole">
+		INSERT INTO authority VALUE(#{name}, #{alist});
+	</insert>
+	
+	<insert id="insertMA">
+		INSERT INTO ma VALUE(#{mb_id}, #{a_name})
+	</insert>
+	
+	<!-- 
+	========================== DELETE ========================== 
+	 -->
+	<delete id="deleteMA">
+		DELETE FROM ma WHERE ma_a_name = #{a_name};
+	</delete>
+	
+	<delete id="deleteRole">
+		DELETE FROM authority WHERE a_name = #{a_name};
+	</delete>
+</mapper>

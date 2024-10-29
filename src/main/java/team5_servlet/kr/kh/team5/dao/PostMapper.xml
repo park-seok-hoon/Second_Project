@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team5_servlet.kr.kh.team5.dao.PostDAO">
+
+	<!-- 
+	====================================================Select====================================================
+	 -->
+	<select id="selectPostByPnum" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		SELECT post.*, b_name AS board, c_name AS category 
+		FROM team5.post
+			JOIN board ON p_b_num = b_num
+		    JOIN category ON b_c_num = c_num
+	    WHERE p_num = #{num}
+	</select>
+  
+  	<select id="selectPostByBoard" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+  		select * from post where p_b_num = #{num}
+  	</select>
+  	
+  	<select id="selectSerchPostByBoard" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		SELECT * 
+		FROM post 
+		<if test='cri.type=="all"'>
+			where p_b_num = #{cnum} and p_title like concat('%', #{cri.search},'%') or p_mb_id = #{cri.search}
+		</if>
+		<if test='cri.type=="title"'>
+			where p_b_num = #{cnum} and p_title like concat('%', #{cri.search},'%') 
+		</if>
+		<if test='cri.type=="writer"'>
+			where p_b_num = #{cnum} and p_mb_id = #{cri.search}
+		</if>
+		ORDER BY p_num DESC
+		LIMIT 0, #{cri.perPageNum};
+	</select>
+	
+	<select id="selectPostByCheck" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		select * from post order by p_view desc;
+	</select>
+	
+	<select id="getPostByPnum" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+		SELECT * FROM post WHERE p_num = #{num}
+	</select>
+
+	
+	<select id="getCategory" resultType="String">
+		SELECT c_name FROM category
+			JOIN board ON c_num = #{b_c_num}
+		WHERE b_num = #{b_num}
+	</select>
+	
+
+	<select id="selectPostById">
+		SELECT * FROM post JOIN Reply ON p_num=r_p_num where r_mb_id=#{id}
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+			SELECT count(*) 
+			FROM post 
+			<if test='cri.type=="all"'>
+				where p_b_num = #{cnum} and p_title like concat('%', #{cri.search},'%') or p_mb_id = #{cri.search}
+			</if>
+			<if test='cri.type=="title"'>
+				where p_b_num = #{cnum} and p_title like concat('%', #{cri.search},'%') 
+			</if>
+			<if test='cri.type=="writer"'>
+				where p_b_num = #{cnum} and p_mb_id = #{cri.search}
+			</if>
+	</select>
+	
+	<!-- 
+	====================================================Insert====================================================
+	 -->
+	<insert id="insertPost">
+		INSERT post(p_title, p_content, p_b_num, p_mb_id, p_date) VALUES(#{post.p_title}, #{post.p_content}, #{post.p_b_num}, #{post.p_mb_id}, #{post.p_date})
+	</insert>
+	
+
+	<!-- 
+	====================================================Delete====================================================
+	 -->
+	
+	<delete id="deletePost">
+		DELETE FROM post WHERE p_num = #{post.p_num}
+	</delete>
+
+<!-- 
+	====================================================Update====================================================
+	 -->
+
+	<update id="updatePost">
+		UPDATE post SET
+			p_title = #{post.p_title},
+			p_content = #{post.p_content},
+			p_b_num = #{post.p_b_num}
+		WHERE p_num = #{post.p_num}
+	</update>
+	
+  
+  <update id="increaseView">
+		UPDATE post SET
+			p_view = p_view + 1
+		WHERE p_num = #{num}
+	</update>
+	
+
+	<delete id="deletePostById">
+		DELETE FROM post WHERE p_mb_id=#{id}
+	</delete>
+	<select id="selectTotalCountByKey" resultType="int">
+		SELECT count(*) 
+		FROM post
+		
+			where p_title like concat('%', #{cri.search},'%') 
+		
+	</select>
+	<select id="selectPostList" resultType="team5_servlet.kr.kh.team5.model.vo.PostVO">
+	SELECT * 
+		FROM post 
+		
+		
+			where p_title like concat('%', #{cri.search},'%') 
+		
+		
+		ORDER BY p_num DESC
+		LIMIT 0, #{cri.perPageNum};
+	</select>
+</mapper>
