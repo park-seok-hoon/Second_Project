@@ -16,5 +16,10 @@
 
 ## 개발 환경
 - `Java 8`
-- 
-- `draw.io` <https://drive.google.com/drive/home>
+- `JDK-21`
+- `Eclipse`
+- Database : `Oracle`
+- ORM : `Mybatis`
+
+# 주요 기능
+로그인 
