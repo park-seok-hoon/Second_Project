@@ -56,8 +56,10 @@
 - 모든 게시판,게시글,댓글,카테고리 삭제 가능
 
 ## 맡은 기능 설명
-로그인 - [상세보기] (https://github.com/park-seok-hoon/Second_Project/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
-회원가입 - [상세보기] (https://github.com/park-seok-hoon/Second_Project/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
+로그인 - [상세보기](https://github.com/park-seok-hoon/Second_Project/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
+
+
+회원가입 - [상세보기](https://github.com/park-seok-hoon/Second_Project/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
 
 
 
