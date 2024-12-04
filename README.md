@@ -57,9 +57,16 @@
 
 ## 맡은 기능 설명
 로그인 - [**상세보기**](https://github.com/park-seok-hoon/Second_Project/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
-
+- ID 중복 체크
 
 회원가입 - [**상세보기**](https://github.com/park-seok-hoon/Second_Project/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
+- ID 중복 체크
+- 회원가입 유효성 검사
+
+댓글 -[**상세보기**]()
+- 댓글 작성,읽기,수정,삭제(CRUD)
+
+
 
 
 
