@@ -81,7 +81,34 @@
   session을 쓰면 web을 종료하지 않는 이상 보통 30분 이상 정보가 저장이 되어서 서버를 재가동하더라도 로그인이 된채로 작업한 내용에 대해서 확인을 할 수 있다는 장점이 있다는 것에 대해서 알게 되었습니다.
 </details>
 
+<details>
+<summary>Mapper 오류</summary>
 
+  ```
+
+<mapper namespace="team5_servlet.kr.kh.team5.dao.AdminDAO"> 
+
+  ```
+  지금 보는 예시와 같이 경로 설정을 관리자 DAO에 대한 관리자 MAPPER에 연결을 해야 하는데 다른 Mapper에 연결을 하여 오류가 뜨는 문제점이 있었지만 경로 설정을 잘못했다는 문제점을 알게되었습니다.
+
+
+```
+DAO
+	AuthorityVO selectRoleByAname(@Param("a_name")String name);
+```
+
+```
+ Mapper
+  <select id="selectRoleByAname" resultType="team5_servlet.kr.kh.team5.model.vo.AuthorityVO">
+		SELECT a_name, LPAD(a_list, 6, 0) AS a_list FROM authority WHERE a_name = #{a_name}
+	</select>
+```
+
+DAO에서 설정한 추상메소드 이름과 mapper에서 id 명을 동일하게 해야지만 받을수 있다는 것을 오류가 나고 나서 알게 되었고,
+객체가 가지고 있는 변수값을 받을 때는 항상 resultType에 경로명을 명시해줘야만 한다는 것을 알게 되었습니다.
+또한 select문을 쓸 때는 resultType을 쓰지만 select문이 아닐 때는 resultType을 쓰지 않는 것 또한 알게 되었습니다.
+
+</details>
 
 
 
