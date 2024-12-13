@@ -56,14 +56,14 @@
 - 모든 게시판,게시글,댓글,카테고리 삭제 가능
 
 ## 맡은 기능 설명
-로그인 - [**상세보기**](https://github.com/park-seok-hoon/Second_Project/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
+로그인 - [**상세보기**] (https://github.com/park-seok-hoon/Second_Project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 - ID 중복 체크
 
-회원가입 - [**상세보기**](https://github.com/park-seok-hoon/Second_Project/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
+회원가입 - [**상세보기**] (https://github.com/park-seok-hoon/Second_Project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
 - ID 중복 체크
 - 회원가입 유효성 검사
 
-댓글 -[**상세보기**]()
+댓글 -[**상세보기**](https://github.com/park-seok-hoon/Second_Project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EB%8C%93%EA%B8%80)
 - 댓글 작성,읽기,수정,삭제(CRUD)
 
 
